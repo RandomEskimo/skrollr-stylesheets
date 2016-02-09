@@ -1,5 +1,5 @@
-skrollr-stylesheets 1.0.0
-=========================
+skrollr-stylesheets 1.0.0.1
+===========================
 
 Allows separation of skrollr keyframes and the document by putting them inside your stylesheets, in **under 1kb** (minified + gzipped). Works in all browsers including IE8+.
 
@@ -10,7 +10,7 @@ Documentation
 
 This is a completely separate project. skrollr-stylesheets does not depend on skrollr in any way. It parses your stylesheets (`link` and `style` elements) and adds the information to the document as skrollr compatible data-attributes. After skrollr-stylesheets did it's job, you can use skrollr the way you're used to, just as if you had put the data-attributes on the elements manually.
 
-When I say "parsing" I mean it's using regular expressions. Thus you should avoid doing funky stuff inside your CSS files (actually, comments at the wrong place could break the current version). Just put all skrollr related things in one file and keep it clean.
+When I say "parsing" I mean it's using regular expressions. Thus you should avoid doing funky stuff inside your CSS files. Just put all skrollr related things in one file and keep it clean.
 
 skrollr-stylesheets borrows it's syntax from CSS animations and uses it's own `-skrollr` prefix. Here's an example which should explain everything to get you started with skrollr-stylesheets.
 
@@ -161,6 +161,11 @@ skrollr-stylesheets tries to mimic the way normal CSS works in terms of inherita
 
 Changelog
 =====
+
+1.0.0.1 (2015-02-09) (RandomEskimo)
+------------------
+
+*Added a comment filter to remove comments from the style sheets before they a proccessed.
 
 1.0.0 (2014-12-12)
 ------------------

@@ -94,7 +94,7 @@
 
 		//Now parse all stylesheets.
 		for(var contentIndex = 0; contentIndex < contents.length; contentIndex++) {
-			content = contents[contentIndex];
+			content = filterComments(contents[contentIndex]);
 
 			parseAnimationDeclarations(content, animations);
 			parseAnimationUsage(content, selectors);
@@ -254,5 +254,39 @@
 		}
 	};
 
+    /**filters comments out of a stylesheet text
+    *  Please note: this is a quick and dirty filter as it does not
+    *  check if the comment "tags" are within a string
+    *  however 99% of the time there shouldn't be strings with comment
+    *  "tags" within them.
+    *  That being said it shouldn't break your css and it should be reasonably fast 
+    *  as it a single pass filter
+    */
+    var filterComments = function(content)
+    {
+        var result = "";
+        for(var i = 0;i < content.length;++i)
+        {
+            var c = content.charAt(i);
+            //check for the start of a comment
+            if(c == '/' && content.length > i + 1 && content.charAt(i + 1) == '*')
+            {
+                //skip ahead to the end of the comment
+                for(i = i + 2;i < content.length;++i)
+                {
+                    if(content.charAt(i) == '*' && content.length > i + 1 && content.charAt(i + 1) == '/'){
+                        i++;
+                        break;
+                    }
+                }
+            }
+            else{
+                //if no comment then add the character to the output
+                result += c;
+            }
+        }
+        return result;
+    }
+    
 	kickstart(document.querySelectorAll('link, style'));
 }(window, document));
