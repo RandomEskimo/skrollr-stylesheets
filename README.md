@@ -165,7 +165,7 @@ Changelog
 1.0.0.1 (2015-02-09) (RandomEskimo)
 ------------------
 
-* Added a comment filter to remove comments from the style sheets before they a proccessed.
+* Added a comment filter to remove comments from the style sheets before they are proccessed.
 
 1.0.0 (2014-12-12)
 ------------------
